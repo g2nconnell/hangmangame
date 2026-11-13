@@ -1,0 +1,30 @@
+/* Mobile-specific styles */
+@media (max-width: 1170px) {
+    canvas#hangmanCanvas {
+        margin-top: 20px;
+    }
+    
+    div#textPart {
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    div#textPart {
+        width: auto;
+    }
+
+    div#wordDisplay,
+    div#lettersUsed {
+        height: auto;
+    }
+
+    div#sessionStatus {
+        display:block;
+        margin-left: 0;
+    }
+
+    canvas#hangmanCanvas {
+        margin-top: 20px;
+    }
+}

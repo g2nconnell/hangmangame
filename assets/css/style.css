@@ -1,0 +1,317 @@
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: left;
+    margin: 20px;
+    color: #333;
+    font-size: 2em;
+}
+
+p {
+    text-align: left;
+    margin: 10px 20px;
+    color: #666;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+div#gameBoard {
+    position: relative;
+    padding: 20px;
+}
+
+div#textPart {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    width: 800px;
+}
+
+div#wordDisplay {
+    font-size: 2em;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    min-height: 200px;
+    padding: 20px;
+}
+
+.letter-display {
+    display: inline-block;
+    min-width: 1em;
+    margin: 0 0.15em;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 1.5em;
+}
+
+.letter-display--space {
+    min-width: 0;
+    margin: 0;
+    text-decoration: none;
+    white-space: pre;
+    width: 50px;
+    height: 50px;
+}
+
+.letter-display--punctuation {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.letter-display--punctuation .flip-card-back {
+    color: rgb(39, 39, 189);
+}
+
+div#lettersUsed {
+    font-size: 1.5em;
+    margin-top: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    height: 188px;
+    padding: 20px;
+}
+
+div#drawingPart {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#gameControls {
+    margin-top: 20px;
+}
+
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: lightyellow;
+}
+
+.letter-choice {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;;
+    margin: 5px;
+    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+    background-color: #88c2df;
+    cursor: pointer;
+}
+
+.letter-choice--used::after {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: 2px;
+    background-color: #c00;
+    content: "";
+    pointer-events: none;
+    transform: rotate(45deg);
+}
+
+.letter-choice--used:disabled {
+    cursor: not-allowed;
+}
+
+button#resetButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #73a3bb;
+    color: white;
+    border: 1px solid #5a8a9f;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button#resetButton:hover {
+    background-color: #77b0d0;
+}
+
+div#gameStatus {
+    display:inline-block;
+    margin: 20px 0px;
+    font-size: 1.5em;
+    color: #00c;
+}
+span#gameStatusText {
+    color: rgb(28, 206, 28);
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+div#sessionStatus {
+    display:inline-block;
+    margin: 20px 0px;
+    font-size: 1.5em;
+    color: #00c;
+    margin-left: 100px;
+}
+
+div#sessionWins,
+div#sessionLosses {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+span#sessionWinsText,
+span#sessionLossesText {
+    color: rgb(28, 206, 28);
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Game header styles */
+:root {
+  --header-bg: #1a1a2e;
+  --accent-color: #e94560;
+  --text-color: #ffffff;
+  --header-height: 70px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 2rem;
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--accent-color);
+  margin-bottom: 50px;
+}
+
+.game-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 0px #000;
+}
+
+button.help-button {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Winner animation styles */
+.winner {
+  display: inline-block;
+  animation: text-pulse 2s ease-in-out 3;
+}
+
+@keyframes text-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.5); }
+}
+
+/* Loser animation styles */
+.loser {
+  display: inline-block;
+  animation: lose 5s ease-out both 3;
+}
+
+@keyframes lose {
+  0%   { transform: translateX(0); opacity: 1; color: rgb(255, 0, 0); }
+  15%  { transform: translateX(-6px); }
+  30%  { transform: translateX(6px); }
+  45%  { transform: translateX(-4px); }
+  60%  { transform: translateX(0); }
+  100% { opacity: 0.65; color: #777; }
+}
+
+/* Flip card styles */
+.flip-card {
+  background-color: transparent;
+  width: 50px;
+  height: 60px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/* You can also use JavaScript to add a class to flip the card */
+.flip-card-flip .flip-card-inner {
+  transform: rotateY(180deg);
+}
+/*
+** save for reference **
+    .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    }
+*/
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background: #edda87;
+    background: linear-gradient(90deg, rgba(237, 218, 135, 1) 0%, rgba(196, 181, 114, 1) 50%, rgba(171, 156, 99, 1) 100%);  
+    color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background: #edda87;
+    background: linear-gradient(90deg, rgba(237, 218, 135, 1) 0%, rgba(196, 181, 114, 1) 50%, rgba(171, 156, 99, 1) 100%);  color: black;
+    transform: rotateY(180deg);
+}
+
+/* restart game animation -- reload phrase */
+.is-leaving {
+  animation: leave 2s ease-in both;
+}
+
+.is-entering {
+  animation: enter 2s ease-out both;
+}
+
+@keyframes leave {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
