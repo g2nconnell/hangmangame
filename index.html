@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hangman Game</title>
+        <link rel="stylesheet" href="/assets/css/hangman.css">
+        <link rel="icon" href="/assets/images/favicon.ico" />
+    </head>
+    <body>
+        <header class="game-header">
+            <h1 class="game-logo">Hangman Game</h1>
+            <button type="button" class="help-button" popovertarget="helpPopover" aria-label="Help">Help</button>
+            <div id="helpPopover" popover>
+                <p>To play the classic Hangman game, guess the hidden word before the hangman is fully drawn.</p>
+                <p>You can use the letters provided to make your guesses. Each incorrect guess adds a part to the hangman drawing.</p>
+                <p>Guess all the letters in the hidden word before the hangman is fully drawn to win the game.</p>
+                <p>If the hangman is fully drawn before you guess all the letters, you lose the game.</p>
+                <p>You can restart the game at any time by clicking the "Restart Game" button.</p>
+                <p>Good luck and have fun playing Hangman!</p>
+            </div>
+        </header>
+        <p>Play the classic Hangman game by guessing the hidden word before the hangman is fully drawn.</p>
+        <div id="gameBoard">
+            <div id="statusPart">
+                <div id="gameStatus"><span>Game Status: </span><span id="gameStatusText">In Progress</span></div>
+                <div id="sessionStatus"><div id="sessionWins"><span>Wins: </span><span id="sessionWinsText">0</span></div><div id="sessionLosses"><span>Losses: </span><span id="sessionLossesText">0</span></div></div>
+            </div>
+            <div id="textPart">
+                <div id="wordDisplay">
+                    <div id="phraseContainer"></div>
+                </div>
+                <div id="lettersUsed"></div>
+            </div>
+            <div id="drawingPart">
+                <canvas id="hangmanCanvas" width="300" height="480"></canvas>
+            </div>
+            <div id="gameControls">
+                <button id="resetButton">Restart Game</button>
+            </div>
+        </div>
+        <script type="module">
+            import { onDocumentReady } from '/assets/js/main.js';
+            document.addEventListener('DOMContentLoaded', onDocumentReady);
+        </script>
+    </body>
+</html>
