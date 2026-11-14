@@ -1,5 +1,13 @@
 export class LetterChoice {
     
+    /**
+     * The LetterChoice class handles creating and managing a letter choice button.
+     * @param {string} letter
+     * @returns {LetterChoice}
+     * @example
+     * const letterChoice = new LetterChoice('a');
+     * document.body.appendChild(letterChoice.button);
+     */
     constructor(letter) {
         if (typeof letter !== 'string' || !/^[a-z]$/i.test(letter)) {
             throw new TypeError('LetterChoice requires a single letter.');

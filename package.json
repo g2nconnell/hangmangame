@@ -5,7 +5,7 @@
   "keywords": [
     "game"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "author": "Glenn Connell",
   "type": "module",
   "main": "main.js",
@@ -14,10 +14,12 @@
   },
   "scripts": {
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "docs": "jsdoc -c jsdoc.json -r -d docs"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^5.0.1",
+    "jsdoc": "^4.0.5",
     "jsdom": "^30.1.1",
     "vitest": "^5.0.1"
   }

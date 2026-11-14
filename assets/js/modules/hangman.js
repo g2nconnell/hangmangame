@@ -11,7 +11,16 @@
  * } while (hangman.bodyPartsDrawn < 7);
  */
 export class Hangman {
-    // The Hangman class handles drawing the hangman figure on a canvas.
+    /**
+     * The Hangman class handles drawing the hangman figure on a canvas.
+     * @param {string} canvasId
+     * @returns {Hangman}
+     * @example
+     * const hangman = new Hangman('hangmanCanvas');
+     * do {
+     *     hangman.drawNextPart(); // Draw the next part of the hangman figure
+     * } while (hangman.bodyPartsDrawn < 7);
+     */
     constructor(canvasId) {
         this.fullBodyDrawn = false;
         this.canvas = document.getElementById(canvasId);
