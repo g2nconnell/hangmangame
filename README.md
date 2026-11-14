@@ -8,3 +8,4 @@ If the hangman is fully drawn before you guess all the letters, you lose the gam
 You can restart the game at any time by clicking the "Restart Game" button.
 Good luck and have fun playing Hangman!
 
+![Screenshot of Hangman Game](./assets/images/screenshot-of-hangman.gif)
