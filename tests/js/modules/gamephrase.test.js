@@ -23,9 +23,29 @@ describe('GamePhrase', () => {
         expect(gamePhrase.getPhrase()).toBe('Hi!');
         expect(gamePhrase.letterDisplays.map(display => display.getLetter()))
             .toEqual(['H', 'I', '!']);
-        expect(container.children).toHaveLength(3);
+        expect(container.querySelectorAll('.letter-display')).toHaveLength(3);
+        expect(container.querySelector('.phrase-word').children).toHaveLength(3);
         expect(gamePhrase.letterDisplays[0].isRevealed()).toBe(false);
         expect(gamePhrase.letterDisplays[2].isRevealed()).toBe(true);
+    });
+
+    it('renders each word as a single group and keeps spaces between groups', () => {
+        const gamePhrase = new GamePhrase('Hello world!', 'phraseDisplay');
+        const renderedPhrase = document.createElement('div');
+
+        gamePhrase.renderPhrase(renderedPhrase);
+
+        expect(renderedPhrase.children).toHaveLength(3);
+        const [firstWord, space, secondWord] = renderedPhrase.children;
+        expect(firstWord.classList.contains('phrase-word')).toBe(true);
+        expect([...firstWord.children]).toEqual(
+            gamePhrase.letterDisplays.slice(0, 5).map(display => display.element)
+        );
+        expect(space.classList.contains('letter-display--space')).toBe(true);
+        expect(secondWord.classList.contains('phrase-word')).toBe(true);
+        expect([...secondWord.children]).toEqual(
+            gamePhrase.letterDisplays.slice(6).map(display => display.element)
+        );
     });
 
     it.each(['', 'hello, world', '123'])('rejects an invalid phrase: %s', phrase => {
@@ -72,7 +92,8 @@ describe('GamePhrase', () => {
 
         expect(oldElements.every(element => !element.isConnected)).toBe(true);
         expect(gamePhrase.getPhrase()).toBe('new phrase');
-        expect(container.children).toHaveLength('new phrase'.length);
+        expect(container.querySelectorAll('.letter-display')).toHaveLength('new phrase'.length);
+        expect(container.querySelectorAll('.phrase-word')).toHaveLength(2);
         expect(container.classList.contains('is-entering')).toBe(false);
 
         vi.advanceTimersByTime(1000);

@@ -59,15 +59,27 @@ export class GameController {
         });
     }
 
+    
+    /**
+     * Gets the current session status.
+     * @returns {{wins: number, losses: number}} The current session status.
+     */
     getSessionStatus() {
         const data = sessionStorage.getItem('hangmanSessionStatus');
         return data ? JSON.parse(data) : { wins: 0, losses: 0 };
     }
 
+    /**
+     * Sets the current session status.
+     * @param {{wins: number, losses: number}} status - The session status to save.
+     */
     setSessionStatus(status) {
         sessionStorage.setItem('hangmanSessionStatus', JSON.stringify(status));
     }
 
+    /**
+     * Updates the session status display.
+     */
     updateSessionStatusDisplay() {
         const sessionWinsText = document.getElementById(this.statusIds.sessionWins);
         const sessionLossesText = document.getElementById(this.statusIds.sessionLosses);
@@ -75,11 +87,18 @@ export class GameController {
         sessionLossesText.textContent = this.sessionStatus.losses;
     }
 
+    /**
+     * Gets the current phrase.
+     * @returns {string} The current phrase.
+     */
     getPhrase() {
         const phrase = this.phraseDataManager.getPhrase();
         return phrase;
     }
 
+    /**
+     * Resets the game to its initial state.
+     */
     resetGame() {
         this.gameCompleted = false;
         this.hangman.reset();
@@ -93,6 +112,10 @@ export class GameController {
         this.letterChoices.forEach(choice => choice.button.disabled = false);
     }
 
+    /**
+     * Matches a letter against the current phrase.
+     * @param {string} letter - A single letter to match.
+     */
     matchLetters(letter) {
         const found = this.gamePhrase.findLetter(letter);
         if (!found) {
@@ -105,6 +128,9 @@ export class GameController {
         }
     }
 
+    /**
+     * Handles the game loss.
+     */
     gameLost() {
         this.hangman.drawHead(true);
         const gameStatusText = document.getElementById(this.statusIds.gameStatus);
@@ -117,6 +143,9 @@ export class GameController {
         this.letterChoices.forEach(choice => choice.button.disabled = true);
     }
 
+    /**
+     * Handles the game win.
+     */
     gameWon() {
         const gameStatusText = document.getElementById(this.statusIds.gameStatus);
         gameStatusText.textContent = "Game Won!";

@@ -218,6 +218,12 @@ button.help-button {
   cursor: pointer;
 }
 
+.phrase-word {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
 /* Winner animation styles */
 .winner {
   display: inline-block;

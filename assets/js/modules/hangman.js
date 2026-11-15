@@ -28,6 +28,9 @@ export class Hangman {
         this.reset();
     }
 
+    /**
+     * Resets the hangman figure.
+     */
     reset() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawGallows();
@@ -35,6 +38,10 @@ export class Hangman {
         this.fullBodyDrawn = false;
     }
 
+    
+    /**
+     * Draws the gallows.
+     */
     drawGallows() {
         this.ctx.beginPath();
         this.ctx.moveTo(75, 350); // base
@@ -46,10 +53,17 @@ export class Hangman {
         this.ctx.stroke();
     }
 
+    /**
+     * Clears the head from the canvas.
+     */
     clearHead() {
         this.ctx.clearRect(80, 80, 40, 40);
     }
 
+    /**
+     * Draws the head.
+     * @param {boolean} isDead - Whether to draw a sad face.
+     */
     drawHead(isDead = false) {
         this.clearHead();
         this.ctx.beginPath();
@@ -63,6 +77,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the torso.
+     */
     drawTorso() {
         this.ctx.beginPath();
         this.ctx.moveTo(100, 120);
@@ -71,6 +88,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the left arm.
+     */
     drawLeftArm() {
         this.ctx.beginPath();
         this.ctx.moveTo(100, 140);
@@ -79,6 +99,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the right arm.
+     */
     drawRightArm() {
         this.ctx.beginPath();
         this.ctx.moveTo(100, 140);
@@ -87,6 +110,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the left leg.
+     */
     drawLeftLeg() {
         this.ctx.beginPath();
         this.ctx.moveTo(100, 220);
@@ -95,6 +121,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the right leg.
+     */
     drawRightLeg() {
         this.ctx.beginPath();
         this.ctx.moveTo(100, 220);
@@ -103,6 +132,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the happy face.
+     */
     drawHappyFace() {
         this.ctx.beginPath();
         this.ctx.arc(92, 95, 2, 0, Math.PI * 2, true); // left eye
@@ -116,6 +148,9 @@ export class Hangman {
         this.ctx.stroke();
     }
 
+    /**
+     * Draws the tongue.
+     */
     drawTongue() {
         this.ctx.beginPath();
         this.ctx.moveTo(96, 107);
@@ -125,10 +160,17 @@ export class Hangman {
         this.ctx.stroke();
     }
 
+    /**
+     * Checks whether the full body has been drawn.
+     * @returns {boolean} Whether the full body has been drawn.
+     */
     isFullBodyDrawn() {
         return this.fullBodyDrawn;
     }
 
+    /**
+     * Draws the sad face.
+     */
     drawSadFace() {
         this.ctx.beginPath();
         this.ctx.moveTo(90, 93);
@@ -150,6 +192,9 @@ export class Hangman {
         this.bodyPartsDrawn++;
     }
 
+    /**
+     * Draws the next body part.
+     */
     drawNextPart() {
         if (this.fullBodyDrawn) {
             return;

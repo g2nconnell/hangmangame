@@ -30,6 +30,10 @@ export class LetterChoice {
         });
     }
 
+    
+    /**
+     * Resets the letter choice button.
+     */
     reset() {
         this.button.disabled = false;
         this.button.classList.remove('letter-choice--used');

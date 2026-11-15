@@ -47,21 +47,36 @@ export class LetterDisplay {
         this.reset();
     }
 
+    
+    /**
+     * Gets the letter.
+     * @returns {string} The letter.
+     */
     getLetter() {
         return this.letter;
     }
 
+    /**
+     * Checks whether the letter is revealed.
+     * @returns {boolean} Whether the letter is revealed.
+     */
     isRevealed() {
         return this.revealed;
     }
     
 
+    /**
+     * Reveals the letter.
+     */
     showLetter() {
         this.revealed = true;
         this.element.classList.add('flip-card-flip');
         
     }
 
+    /**
+     * Resets the letter display.
+     */
     reset() {
         this.revealed = !/^[a-z]$/i.test(this.letter);
         this.element.classList.toggle('flip-card-flip', this.revealed);
