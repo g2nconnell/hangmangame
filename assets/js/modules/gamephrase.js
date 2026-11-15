@@ -32,13 +32,6 @@ export class GamePhrase {
         this.letterDisplays = [...phrase].map(character => new LetterDisplay(character));
     }
 
-    /*
-        TODO:
-        Call renderPhrase() after setPhrase() in the constructor and after resetting the phrase. 
-        In reset, clear the old wrappers as well as their contents before rendering again.
-
-        Generate docs
-    */
     /**
      * Renders the phrase in the given container.
      * @param {HTMLElement} container - The container element for the phrase display.
