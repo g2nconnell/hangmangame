@@ -7,5 +7,6 @@ Guess all the letters in the hidden word before the hangman is fully drawn to wi
 If the hangman is fully drawn before you guess all the letters, you lose the game.
 You can restart the game at any time by clicking the "Restart Game" button.
 Good luck and have fun playing Hangman!
-
+## Try It Out!
+[Play Hangman Game](https://g2nconnell.github.io/hangmangame/)
 ![Screenshot of Hangman Game](./assets/images/screenshot-of-hangman.gif)
