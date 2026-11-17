@@ -9,4 +9,5 @@ You can restart the game at any time by clicking the "Restart Game" button.
 Good luck and have fun playing Hangman!
 ## Try It Out!
 [Play Hangman Game](https://g2nconnell.github.io/hangmangame/)
+## Screenshots
 ![Screenshot of Hangman Game](./assets/images/screenshot-of-hangman.gif)
