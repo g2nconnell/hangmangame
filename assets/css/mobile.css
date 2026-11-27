@@ -1,30 +1,134 @@
 /* Mobile-specific styles */
 @media (max-width: 1170px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    div#gameBoard {
+        padding: 12px;
+    }
+
+    div#textPart {
+        width: calc(100% - 320px);
+        max-width: 800px;
+        margin-right: 12px;
+    }
+
     canvas#hangmanCanvas {
         margin-top: 20px;
+        max-width: 300px;
+        width: 100%;
+        height: auto;
     }
     
-    div#textPart {
-        width: auto;
+    div#wordDisplay,
+    div#lettersUsed {
+        box-sizing: border-box;
+        width: 100%;
     }
 }
 
 @media (max-width: 768px) {
+    .game-header {
+        height: auto;
+        min-height: var(--header-height);
+        margin-bottom: 24px;
+        padding: 0 1rem;
+    }
+
+    .game-logo {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    p,
+    #helpPopover p {
+        font-size: 1rem;
+    }
+
+    div#gameBoard {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 12px;
+    }
+
     div#textPart {
-        width: auto;
+        width: 100%;
+        max-width: none;
+        margin-right: 0;
     }
 
     div#wordDisplay,
     div#lettersUsed {
+        box-sizing: border-box;
+        width: 100%;
         height: auto;
+        min-height: 0;
+        padding: 12px;
+    }
+
+    div#wordDisplay {
+        font-size: 1.25rem;
+        overflow-wrap: anywhere;
+    }
+
+    .phrase-word {
+        max-width: 100%;
+        flex-wrap: wrap;
+        white-space: normal;
+    }
+
+    .letter-display {
+        min-width: clamp(28px, 8.5vw, 50px);
+        margin: 0 0.05em;
+        font-size: 1em;
+    }
+
+    .letter-display--space {
+        width: clamp(28px, 8.5vw, 50px);
+        height: clamp(38px, 11vw, 60px);
+    }
+
+    .flip-card {
+        width: clamp(28px, 8.5vw, 50px);
+        height: clamp(38px, 11vw, 60px);
+    }
+
+    div#lettersUsed {
+        font-size: 1rem;
+    }
+
+    .letter-choice {
+        width: clamp(38px, 11vw, 44px);
+        height: clamp(38px, 11vw, 44px);
+        margin: 3px;
+        font-size: 1rem;
+    }
+
+    div#drawingPart {
+        width: 100%;
+        text-align: center;
     }
 
     div#sessionStatus {
-        display:block;
+        display: block;
         margin-left: 0;
+    }
+
+    div#gameStatus,
+    div#sessionStatus {
+        font-size: 1rem;
     }
 
     canvas#hangmanCanvas {
         margin-top: 20px;
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+    }
+
+    button#resetButton {
+        font-size: 1.1rem;
+        padding: 10px 16px;
     }
 }
